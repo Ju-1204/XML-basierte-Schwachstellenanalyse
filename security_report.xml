@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    Beispiel-XML für den Unterricht: IT-Security Schwachstellenbericht
+    Thema: CVE-Schwachstellenmanagement
+-->
+<schwachstellenbericht
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    datum="2024-11-15"
+    version="2.1"
+    erstellt_von="SOC-Team">
+
+    <zusammenfassung>
+        <gesamt_schwachstellen>4</gesamt_schwachstellen>
+        <kritisch>1</kritisch>
+        <hoch>2</hoch>
+        <mittel>1</mittel>
+    </zusammenfassung>
+
+    <schwachstellen>
+
+        <schwachstelle id="CVE-2024-0001" schweregrad="kritisch" cvss_score="9.8">
+            <name>SQL Injection in Login-Formular</name>
+            <beschreibung>
+                Unkontrollierte Benutzereingaben im Authentifizierungsmodul
+                ermöglichen das Umgehen der Zugangskontrolle mittels SQL-Injection.
+            </beschreibung>
+            <betroffene_systeme>
+                <system ip="192.168.1.10" hostname="webserver-prod-01" os="Ubuntu 22.04"/>
+                <system ip="192.168.1.11" hostname="webserver-prod-02" os="Ubuntu 22.04"/>
+            </betroffene_systeme>
+            <status>offen</status>
+            <entdeckt_am>2024-10-01</entdeckt_am>
+            <massnahmen>
+                <massnahme typ="kurzfristig">Prepared Statements implementieren</massnahme>
+                <massnahme typ="langfristig">Code-Review und SAST-Pipeline einrichten</massnahme>
+            </massnahmen>
+        </schwachstelle>
+
+        <schwachstelle id="CVE-2024-0002" schweregrad="hoch" cvss_score="7.5">
+            <name>Veraltete OpenSSL-Version</name>
+            <beschreibung>
+                Die eingesetzte OpenSSL-Version 1.1.1 enthält bekannte Schwachstellen
+                und wird nicht mehr mit Sicherheits-Updates versorgt (End-of-Life).
+            </beschreibung>
+            <betroffene_systeme>
+                <system ip="10.0.0.5" hostname="fileserver-01" os="CentOS 7"/>
+            </betroffene_systeme>
+            <status>in_bearbeitung</status>
+            <entdeckt_am>2024-10-15</entdeckt_am>
+            <massnahmen>
+                <massnahme typ="kurzfristig">Update auf OpenSSL 3.x durchführen</massnahme>
+                <massnahme typ="langfristig">Automatisches Patch-Management einführen</massnahme>
+            </massnahmen>
+        </schwachstelle>
+
+        <schwachstelle id="CVE-2024-0003" schweregrad="hoch" cvss_score="8.1">
+            <name>Fehlende Zwei-Faktor-Authentifizierung (2FA)</name>
+            <beschreibung>
+                Administratorzugänge zum internen VPN sind nur durch Passwort geschützt.
+                Bei Kompromittierung eines Passworts ist ein vollständiger Zugriff möglich.
+            </beschreibung>
+            <betroffene_systeme>
+                <system ip="10.0.0.1" hostname="vpn-gateway" os="pfSense 2.7"/>
+            </betroffene_systeme>
+            <status>offen</status>
+            <entdeckt_am>2024-11-01</entdeckt_am>
+            <massnahmen>
+                <massnahme typ="kurzfristig">TOTP-basierte 2FA aktivieren</massnahme>
+                <massnahme typ="langfristig">Zero-Trust-Architektur evaluieren</massnahme>
+            </massnahmen>
+        </schwachstelle>
+
+        <schwachstelle id="CVE-2024-0004" schweregrad="mittel" cvss_score="5.3">
+            <name>Offene Directory Listings auf Webserver</name>
+            <beschreibung>
+                Verzeichnisauflistung ist auf mehreren Web-Endpunkten aktiviert,
+                was Angreifern Einblick in die Dateistruktur ermöglicht.
+            </beschreibung>
+            <betroffene_systeme>
+                <system ip="192.168.1.10" hostname="webserver-prod-01" os="Ubuntu 22.04"/>
+            </betroffene_systeme>
+            <status>behoben</status>
+            <entdeckt_am>2024-09-20</entdeckt_am>
+            <massnahmen>
+                <massnahme typ="kurzfristig">Options -Indexes in Apache-Konfiguration setzen</massnahme>
+                <massnahme typ="langfristig">Regelmäßige Konfigurationsaudits durchführen</massnahme>
+            </massnahmen>
+        </schwachstelle>
+
+    </schwachstellen>
+
+</schwachstellenbericht>
