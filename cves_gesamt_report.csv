@@ -1,0 +1,21 @@
+=== XML-Strukturanalyse ===
+XML geladen
+Root-Element: <schwachstellenbericht>
+""
+<zusammenfassung>
+  <gesamt_schwachstellen>
+  <kritisch>
+  <hoch>
+  <mittel>
+<schwachstellen>
+  <schwachstelle>
+  <schwachstelle>
+  <schwachstelle>
+  <schwachstelle>
+=== Extrahierte CVEs ===
+""
+id,name,schweregrad,cvss_score
+CVE-2024-0001,SQL Injection in Login-Formular,kritisch,9.8
+CVE-2024-0002,Veraltete OpenSSL-Version,hoch,7.5
+CVE-2024-0003,Fehlende Zwei-Faktor-Authentifizierung (2FA),hoch,8.1
+CVE-2024-0004,Offene Directory Listings auf Webserver,mittel,5.3
